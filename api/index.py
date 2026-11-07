@@ -22,7 +22,9 @@ def app(environ, start_response):
     ses, db = {}, None
     try:
         if not _lib.SECRET_KEY: raise Gagal("SECRET_KEY belum diatur di Environment Variables.", 500)
-        path = environ.get("PATH_INFO", "").rstrip("/") or "/"
+        query_string = parse_qs(environ.get("QUERY_STRING", ""))
+        path = query_string.get("__path", [environ.get("PATH_INFO", "")])[0]
+        path = path.rstrip("/") or "/"
         rute = RUTE.get(path)
         if not rute: raise Gagal("Endpoint tidak ditemukan.", 404)
         if path == "/api/tv":     # publik, tanpa sesi dan tanpa cookie; di-cache 3 detik oleh CDN agar hemat database
@@ -40,7 +42,11 @@ def app(environ, start_response):
             except ValueError: body = {}
             if not isinstance(body, dict): body = {}
         ip = (environ.get("HTTP_X_FORWARDED_FOR", "").split(",")[0].strip() or environ.get("REMOTE_ADDR", "0"))[:45]
-        query = {k: v[0] for k, v in parse_qs(environ.get("QUERY_STRING", "")).items()}
+        query = {
+            k: v[0]
+            for k, v in query_string.items()
+            if k != "__path"
+        }
         db = _lib.DB()
         c = _lib.Ctx(db, ses, body, query, ip)
         hasil = fn(c, query.get("do", "")) if fn in (_aksi.auth, _aksi.action) else fn(c)
