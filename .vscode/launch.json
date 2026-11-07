@@ -1,0 +1,26 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Jalankan Klinik Sehat (lokal)",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/dev_server.py",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Uji backend",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/tests/test_api.py",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Cek kesiapan deploy",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/tools/cek_siap.py",
+      "console": "integratedTerminal"
+    }
+  ]
+}

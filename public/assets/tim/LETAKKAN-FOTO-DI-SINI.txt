@@ -1,0 +1,7 @@
+Folder ini berisi foto untuk halaman Tentang (Pengaturan > Tentang > Buka halaman Tentang).
+
+- tim.jpg  : foto bersama tim (sudah terpasang). Ganti dengan nama berkas yang sama untuk memperbarui. Disarankan lebar sekitar 1280 px, maksimal 300 KB.
+- Foto anggota (opsional): persegi sekitar 400 x 400 px, maksimal 150 KB, mis. indra.jpg. Daftarkan nama berkasnya di public/js/tim.js.
+- Format jpg, png, atau webp. Kecilkan ukuran dulu (mis. di squoosh.app) agar halaman cepat dibuka.
+- Pastikan setiap orang di foto setuju fotonya dipajang. Jangan memajang foto pasien.
+- Jika foto anggota tidak ditemukan, sistem menampilkan inisial nama.

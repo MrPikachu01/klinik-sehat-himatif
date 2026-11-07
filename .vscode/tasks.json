@@ -1,0 +1,8 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    { "label": "Jalankan server lokal", "type": "shell", "command": "python dev_server.py", "windows": { "command": "py dev_server.py" }, "isBackground": true, "problemMatcher": [] },
+    { "label": "Uji backend", "type": "shell", "command": "python tests/test_api.py", "windows": { "command": "py tests/test_api.py" }, "problemMatcher": [] },
+    { "label": "Cek kesiapan deploy", "type": "shell", "command": "python tools/cek_siap.py", "windows": { "command": "py tools/cek_siap.py" }, "problemMatcher": [] }
+  ]
+}
